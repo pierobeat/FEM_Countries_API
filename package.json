@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.4",
     "@tanstack/react-query": "^5.74.4",
     "@tanstack/react-router": "^1.117.0",
+    "axios": "^1.8.4",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
