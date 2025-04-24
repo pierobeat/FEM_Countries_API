@@ -22,7 +22,7 @@ const indexRoute = createRoute({
 
 const detailsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'details/$id',
+  path: 'details/$countryName',
   component: CountryDetails,
 })
 

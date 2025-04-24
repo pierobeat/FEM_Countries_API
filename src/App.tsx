@@ -5,9 +5,9 @@ import { router } from './routes/route';
 
 function App() {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full relative">
       <Header />
-      <div className="mx-auto max-w-[1440px] pt-12 px-2">
+      <div className="mx-auto max-w-[1440px] px-2">
         <RouterProvider router={router} />
       </div>
     </div>
