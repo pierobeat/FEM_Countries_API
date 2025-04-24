@@ -27,7 +27,7 @@ export default function index() {
       method,
       url,
     });
-    return response;
+    return response?.data[0];
   }
 
   return {

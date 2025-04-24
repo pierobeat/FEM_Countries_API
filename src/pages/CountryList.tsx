@@ -1,8 +1,7 @@
-import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from '@tanstack/react-router'
 import { formatCountryName } from '../utils/formatCountryName';
-import CountryApi from '../api'
+import CountryApi from '../api';
 
 function CountryList() {
   const router = useRouter();
