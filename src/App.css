@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Light Mode (default) */
+:root {
+  --background-color: #FAFAFA;
+  --header-background: #ffffff;
+  --text-color: #000000;
+  --button-text-color: #000000;
+  --button-background-color: #ffffff;
+  --input-background-color: #ffffff;
+  --select-background-color: #ffffff;
+  --icon-color: #000000;
+}
+
+/* Dark Mode */
+body.dark {
+  --background-color: #212E37;
+  --header-background: #2B3743;
+  --text-color: #FBFFFF;
+  --button-text-color: #FBFFFF;
+  --button-background-color: #333333;
+  --input-background-color: #2B3743; /* Search Input & Select */
+  --select-background-color: #2B3743; /* Select */
+  --icon-color: #FBFFFF;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--header-background);
+}
+
+.back-button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+button svg {
+  color: var(--icon-color);
+}
+
+h1 {
+  color: var(--text-color);
+}
+
+/* Style for Search Input and Select */
+input, .MuiOutlinedInput-root, .MuiSelect-root,
+.MuiPaper-root, .MuiInputAdornment-root, .MuiInputBase-input .MuiOutlinedInput-input, .MuiList-root {
+  background-color: var(--input-background-color);
+  color: var(--text-color);
+}
+
+/* Select Menu */
+.MuiSelect-root {
+  background-color: var(--select-background-color);
+}

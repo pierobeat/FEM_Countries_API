@@ -20,6 +20,15 @@ export default function index() {
     });
     return response;
   }
+  async function getCountriesByName(name:string) {
+    const method = "get";
+    const url = `${baseURL}name/${name}`;
+    const response = await axiosInstances({
+      method,
+      url,
+    });
+    return response;
+  }
   async function getCountryDetails(name:string) {
     const method = "get";
     const url = `${baseURL}name/${name}`;
@@ -33,6 +42,7 @@ export default function index() {
   return {
     getAllCountries,
     getCountriesByRegion,
+    getCountriesByName,
     getCountryDetails
   }
 }
