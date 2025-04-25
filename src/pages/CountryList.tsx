@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useRouter } from '@tanstack/react-router'
 import { formatCountryName } from '../utils/formatCountryName';
 import CountryApi from '../api';
+import CountryData from '../helper/CountryData';
 
 function CountryList() {
   const router = useRouter();
@@ -37,11 +38,11 @@ function CountryList() {
                   />
                 </div>
                 <div className="p-8 space-y-4 bg-white rounded-b-md">
-                  <h2>{dt.name.official}</h2>
+                  <h2 className="font-bold text-[18px]">{dt.name.official}</h2>
                   <div>
-                    <p><span>Population:</span> {dt.population}</p>
-                    <p><span>Region:</span> {dt.population}</p>
-                    <p><span>Capital:</span> {dt.capital}</p>
+                    <CountryData title="Population" value={dt.population.toString()} />
+                    <CountryData title="Region" value={dt.region} />
+                    <CountryData title="Capital" value={dt.capital} />
                   </div>
                 </div>
               </div>
@@ -53,4 +54,4 @@ function CountryList() {
   )
 }
 
-export default CountryList
+export default CountryList;

@@ -2,10 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useRouter, useParams } from '@tanstack/react-router';
 import { formatCountryName } from '../utils/formatCountryName';
 import CountryApi from '../api';
-
-const CountryData = ({ title, value }) => (
-  <p><span className="font-bold">{`${title}: `}</span>{value}</p>
-);
+import CountryData from '../helper/CountryData';
 
 function CountryDetails() {
   const router = useRouter();
@@ -35,7 +32,11 @@ function CountryDetails() {
 
   return (
     <div>
-      <div className="py-12 bg-red-400">CountryDetails</div>
+      <div className="py-12">
+        <button className="py-2 px-8 bg-white border-transparent rounded-md shadow-md">
+          Back
+        </button>
+      </div>
       <div className="w-full grid grid-cols-2 gap-x-24 h-[25rem]">
         <div className="bg-blue-400">
           <img
