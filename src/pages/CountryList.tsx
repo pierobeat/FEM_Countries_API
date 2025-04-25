@@ -1,10 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
-import { useRouter } from '@tanstack/react-router'
+import { useQuery } from '@tanstack/react-query';
+import { useRouter } from '@tanstack/react-router';
 import { CircularProgress } from '@mui/material';
 import { formatCountryName } from '../utils/formatCountryName';
 import CountryApi from '../api';
 import CountryData from '../helper/CountryData';
-import { useState } from 'react';
 import SearchInput from '../components/SearchInput';
 import RegionSelect from '../components/RegionSelect';
 import { useFilterCountriesStore } from '../store/FilterCountries';
@@ -18,7 +17,7 @@ function CountryList() {
 
   const handleSearchChange = (value: string) => {
     addFilter('search', value);
-    removeRegion(); 
+    removeRegion();
   };
 
   const handleRegionChange = (value: string) => {
@@ -56,7 +55,7 @@ function CountryList() {
   return (
     <div className="space-y-12">
       <div className="pt-12 mt-1 sticky top-20 w-full flex items-end justify-between bg-[var(--background-color)]">
-        <div className="w-[430px]">
+        <div className="w-[200px] sm:w-[430px]">
           <SearchInput
             value={searchQuery}
             onChange={handleSearchChange}
@@ -72,8 +71,8 @@ function CountryList() {
           <CircularProgress />
         </div>
       ) : (
-        <div className="w-full grid grid-cols-4 gap-16">
-          {countries?.map((dt) => (
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16">
+          {countries?.map((dt: any) => (
             <div
               key={dt.name.common}
               className="shadow-md rounded-md cursor-pointer"

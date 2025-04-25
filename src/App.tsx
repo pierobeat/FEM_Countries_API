@@ -29,7 +29,7 @@ function App() {
   return (
     <div className={`w-full h-full relative ${isDarkMode ? 'dark' : 'light'}`}>
       <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-      <div className="mx-auto max-w-[1440px] px-2">
+      <div className="mx-auto px-2 max-w-[480px] sm:max-w-[1024px] lg:max-w-[1280px]">
         <RouterProvider router={router} />
       </div>
     </div>

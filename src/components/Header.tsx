@@ -1,5 +1,3 @@
-import React from 'react';
-
 type HeaderProps = {
   toggleTheme: () => void;
   isDarkMode: boolean;
@@ -8,7 +6,7 @@ type HeaderProps = {
 function Header({ toggleTheme, isDarkMode }: HeaderProps) {
   return (
     <header className="w-full bg-[var(--header-background)] shadow-sm sticky top-0">
-      <div className="mx-auto max-w-[1440px] px-2">
+      <div className="mx-auto w-full px-2 max-w-[480px] sm:max-w-[1024px] lg:max-w-[1280px]">
         <div className="flex h-20 items-center justify-between">
           <h1 className="text-xl font-bold text-[var(--text-color)]">Where in the world?</h1>
           <button 

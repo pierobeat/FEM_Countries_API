@@ -24,7 +24,6 @@ body.dark {
   --icon-color: #FBFFFF;
 }
 
-/* Global Styles */
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -47,14 +46,12 @@ h1 {
   color: var(--text-color);
 }
 
-/* Style for Search Input and Select */
 input, .MuiOutlinedInput-root, .MuiSelect-root,
 .MuiPaper-root, .MuiInputAdornment-root, .MuiInputBase-input .MuiOutlinedInput-input, .MuiList-root {
   background-color: var(--input-background-color);
   color: var(--text-color);
 }
 
-/* Select Menu */
 .MuiSelect-root {
   background-color: var(--select-background-color);
 }

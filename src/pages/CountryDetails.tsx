@@ -16,7 +16,7 @@ function CountryDetails() {
     queryFn: () => CountryApi().getCountryDetails(countryName),
   });
 
-  function getNonEnglishNativeName(data) {
+  function getNonEnglishNativeName(data: any) {
     if (!data?.name?.nativeName) return {};
     const nativeName = data.name.nativeName;
 
@@ -43,7 +43,7 @@ function CountryDetails() {
           <CircularProgress />
         </div>
       ) : (
-        <div className="w-full grid grid-cols-2 gap-x-24 h-[25rem]">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-24 h-[25rem]">
           <div className="bg-blue-400">
             <img
               src={data?.flags?.png || 'default-flag.png'}
