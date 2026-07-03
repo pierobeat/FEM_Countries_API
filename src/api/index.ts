@@ -1,48 +1,65 @@
+import { AxiosResponse } from "axios";
 import axiosInstances from "../helper/axiosInstances";
-const baseURL = import.meta.env.VITE_API_URL
+import type { Country } from "../types/Country";
+import { filterCountries } from "../helper/Helper";
+const baseURL = import.meta.env.VITE_API_URL;
 
 export default function index() {
-  async function getAllCountries() {
+  async function getAllCountries(): Promise<Country[]> {
     const method = "get";
-    const url = `${baseURL}all`;
-    const response = await axiosInstances({
+    const url = `${baseURL}data.json`;
+    const response: AxiosResponse<Country[]> = await axiosInstances({
       method,
       url,
     });
     return response?.data;
   }
-  async function getCountriesByRegion(region:string) {
+
+  async function getCountriesByRegion(
+    region: string,
+  ): Promise<AxiosResponse<Country[]>> {
     const method = "get";
-    const url = `${baseURL}region/${region}`;
-    const response = await axiosInstances({
+    const url = `${baseURL}data.json`;
+    const response: AxiosResponse<Country[]> = await axiosInstances({
       method,
       url,
     });
-    return response;
+    const { data } = response;
+    const filteredCountries = filterCountries(data, "", region);
+    return { ...response, data: filteredCountries };
   }
-  async function getCountriesByName(name:string) {
+
+  async function getCountriesByName(
+    name: string,
+  ): Promise<AxiosResponse<Country[]>> {
     const method = "get";
-    const url = `${baseURL}name/${name}`;
-    const response = await axiosInstances({
+    const url = `${baseURL}data.json`;
+    const response: AxiosResponse<Country[]> = await axiosInstances({
       method,
       url,
     });
-    return response;
+    const { data } = response;
+    const filteredCountries = filterCountries(data, name, "");
+    return { ...response, data: filteredCountries };
   }
-  async function getCountryDetails(name:string) {
+
+  async function getCountryDetails(code: string): Promise<Country | undefined> {
     const method = "get";
-    const url = `${baseURL}name/${name}`;
-    const response = await axiosInstances({
+    const url = `${baseURL}data.json`;
+    const response: AxiosResponse<Country[]> = await axiosInstances({
       method,
       url,
     });
-    return response?.data[0];
+    const { data } = response;
+    const countryDetails = data.find((country) => country.alpha3Code === code);
+    return countryDetails;
+    // return response?.data[0];
   }
 
   return {
     getAllCountries,
     getCountriesByRegion,
     getCountriesByName,
-    getCountryDetails
-  }
+    getCountryDetails,
+  };
 }

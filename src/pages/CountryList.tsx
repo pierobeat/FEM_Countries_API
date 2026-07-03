@@ -1,12 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
-import { useRouter } from '@tanstack/react-router';
-import { CircularProgress } from '@mui/material';
-import { formatCountryName } from '../utils/formatCountryName';
-import CountryApi from '../api';
-import CountryData from '../helper/CountryData';
-import SearchInput from '../components/SearchInput';
-import RegionSelect from '../components/RegionSelect';
-import { useFilterCountriesStore } from '../store/FilterCountries';
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "@tanstack/react-router";
+import { CircularProgress } from "@mui/material";
+import { formatCountryName } from "../utils/formatCountryName";
+import CountryApi from "../api";
+import CountryData from "../helper/CountryData";
+import SearchInput from "../components/SearchInput";
+import RegionSelect from "../components/RegionSelect";
+import { useFilterCountriesStore } from "../store/FilterCountries";
 
 function CountryList() {
   const router = useRouter();
@@ -16,20 +16,17 @@ function CountryList() {
   const removeRegion = useFilterCountriesStore((state) => state.removeRegion);
 
   const handleSearchChange = (value: string) => {
-    addFilter('search', value);
+    addFilter("search", value);
     removeRegion();
   };
 
   const handleRegionChange = (value: string) => {
-    addFilter('region', value);
-    addFilter('search', '');
+    addFilter("region", value);
+    addFilter("search", "");
   };
 
-  const {
-    data: countries,
-    isLoading,
-  } = useQuery({
-    queryKey: ['country-list', regionFilter, searchQuery],
+  const { data: countries, isLoading } = useQuery({
+    queryKey: ["country-list", regionFilter, searchQuery],
     queryFn: async () => {
       if (regionFilter) {
         const res = await CountryApi().getCountriesByRegion(regionFilter);
@@ -44,11 +41,11 @@ function CountryList() {
     enabled: true,
   });
 
-  const onSeeCountryDetails = (name: string) => {
-    const formattedName = formatCountryName(name, true);
+  const onSeeCountryDetails = (code: string) => {
+    // const formattedName = formatCountryName(name, true);
     router.navigate({
-      to: '/details/$countryName',
-      params: { countryName: formattedName },
+      to: "/$countryCode",
+      params: { countryCode: code },
     });
   };
 
@@ -56,10 +53,7 @@ function CountryList() {
     <div className="space-y-12">
       <div className="pt-12 mt-1 sticky top-20 w-full flex items-end justify-between bg-[var(--background-color)]">
         <div className="w-[200px] sm:w-[430px]">
-          <SearchInput
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
+          <SearchInput value={searchQuery} onChange={handleSearchChange} />
         </div>
         <div className="w-[178px]">
           <RegionSelect value={regionFilter} onChange={handleRegionChange} />
@@ -74,22 +68,25 @@ function CountryList() {
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16">
           {countries?.map((dt: any) => (
             <div
-              key={dt.name.common}
+              key={dt.name}
               className="shadow-md rounded-md cursor-pointer"
-              style={{ backgroundColor: 'var(--header-background)' }}
-              onClick={() => onSeeCountryDetails(dt.name.official)}
+              style={{ backgroundColor: "var(--header-background)" }}
+              onClick={() => onSeeCountryDetails(dt.alpha3Code)}
             >
               <div className="h-40 w-full overflow-hidden rounded-t-md">
                 <img
                   src={dt.flags.png}
-                  alt={dt.name.official + " flag"}
+                  alt={dt.name + " flag"}
                   className="w-full h-40 object-cover"
                 />
               </div>
-              <div className="p-8 space-y-4 rounded-b-md">
-                <h2 className="font-bold text-[18px]">{dt.name.official}</h2>
+              <div className="p-6 space-y-4 rounded-b-md">
+                <h2 className="font-bold text-[18px]">{dt.name}</h2>
                 <div>
-                  <CountryData title="Population" value={dt.population.toString()} />
+                  <CountryData
+                    title="Population"
+                    value={dt.population.toString()}
+                  />
                   <CountryData title="Region" value={dt.region} />
                   <CountryData title="Capital" value={dt.capital} />
                 </div>

@@ -1,7 +1,7 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
+import React from "react";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
 
 type SearchInputProps = {
   value: string;
@@ -12,7 +12,7 @@ type SearchInputProps = {
 const SearchInput: React.FC<SearchInputProps> = ({
   value,
   onChange,
-  placeholder = 'Search for a country...',
+  placeholder = "Search for a country...",
 }) => {
   return (
     <TextField
@@ -22,17 +22,17 @@ const SearchInput: React.FC<SearchInputProps> = ({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       sx={{
-        backgroundColor: 'var(--input-background-color)',
-        color: 'var(--text-color)',
-        '& .MuiInputBase-input::placeholder': {
-          color: 'var(--text-color)',
+        backgroundColor: "var(--input-background-color)",
+        color: "var(--text-color)",
+        "& .MuiInputBase-input::placeholder": {
+          color: "var(--text-color)",
           opacity: 1,
         },
-        '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: 'var(--text-color)',
+        "& .MuiOutlinedInput-notchedOutline": {
+          borderColor: "var(--text-color)",
         },
-        '& .MuiSvgIcon-root': {
-          color: 'var(--icon-color)',
+        "& .MuiSvgIcon-root": {
+          color: "var(--icon-color)",
         },
       }}
       InputProps={{
