@@ -27,11 +27,24 @@ function App() {
   };
 
   return (
-    <div className={`w-full h-full relative ${isDarkMode ? "dark" : "light"}`}>
+    <div
+      className={`w-full h-full min-h-[100vh] relative ${isDarkMode ? "dark" : "light"}`}
+    >
       <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <main className="mx-auto px-2 max-w-[480px] sm:max-w-[1024px] lg:max-w-[1280px] 2xl:max-w-[1530px]">
         <RouterProvider router={router} />
       </main>
+      <footer className="w-full py-6 text-center text-sm text-[var(--text-color)] bg-[var(--header-background)] absolute bottom-0 left-0">
+        © 2026&nbsp;
+        <a
+          className="font-semibold underline-offset-4 hover:underline"
+          href="https://github.com/pierobeat"
+          target="_blank"
+          rel="noreferrer"
+        >
+          pierobeat
+        </a>
+      </footer>
     </div>
   );
 }

@@ -50,13 +50,15 @@ function CountryList() {
   };
 
   return (
-    <div className="space-y-12">
-      <div className="pt-12 mt-1 sticky top-20 w-full flex items-end justify-between bg-[var(--background-color)]">
-        <div className="w-[200px] sm:w-[430px]">
-          <SearchInput value={searchQuery} onChange={handleSearchChange} />
-        </div>
-        <div className="w-[178px]">
-          <RegionSelect value={regionFilter} onChange={handleRegionChange} />
+    <div className="space-y-12 ">
+      <div className="pt-12 mt-1 sticky top-20 w-full bg-[var(--background-color)]">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="w-full sm:w-[430px]">
+            <SearchInput value={searchQuery} onChange={handleSearchChange} />
+          </div>
+          <div className="w-full mb-4 sm:mb-0 sm:w-[178px]">
+            <RegionSelect value={regionFilter} onChange={handleRegionChange} />
+          </div>
         </div>
       </div>
 
@@ -65,7 +67,7 @@ function CountryList() {
           <CircularProgress />
         </div>
       ) : (
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16 pb-2 sm:pb-24">
           {countries?.map((dt: any) => (
             <div
               key={dt.name}

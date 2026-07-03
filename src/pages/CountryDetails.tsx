@@ -47,7 +47,7 @@ function CountryDetails() {
   }
 
   return (
-    <div>
+    <div className="pb-24 sm:pb-0">
       <div className="py-12">
         <button
           className="py-2 px-8 border-transparent rounded-md shadow-md flex gap-x-2 cursor-pointer back-button"
@@ -63,7 +63,7 @@ function CountryDetails() {
           <CircularProgress />
         </div>
       ) : (
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-24 h-[25rem]">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-24">
           <div className="bg-blue-400">
             <img
               src={country?.flags?.png || country?.flag || "default-flag.png"}
@@ -76,7 +76,7 @@ function CountryDetails() {
               <h2 className="text-3xl font-bold">
                 {country?.name || "Unknown Country"}
               </h2>
-              <div className="grid grid-cols-2 gap-x-12">
+              <div className="grid w-full grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-12">
                 <div className="space-y-4">
                   <CountryData
                     title="Native Name"
@@ -114,7 +114,7 @@ function CountryDetails() {
                   />
                 </div>
                 {borderCountries.length > 0 && (
-                  <div className="space-y-4 mt-2 flex w-full flex-wrap col-span-2">
+                  <div className="space-y-4 mt-2 w-full col-span-1 sm:col-span-2">
                     <p className="font-bold">Border Countries:</p>
                     <div className="flex w-full flex-wrap items-start gap-2">
                       {borderCountries.map((borderCountry: any) => (
