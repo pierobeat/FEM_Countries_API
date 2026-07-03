@@ -1,19 +1,21 @@
+import type { Country } from "../types/Country";
+
 export const filterCountries = (
-  countries: any[],
+  countries: Country[],
   searchQuery: string,
   regionFilter: string,
 ) => {
   let filteredCountries = countries;
 
   if (searchQuery) {
-    filteredCountries = filteredCountries.filter((country: any) =>
+    filteredCountries = filteredCountries.filter((country) =>
       country.name.toLowerCase().includes(searchQuery.toLowerCase()),
     );
   }
 
   if (regionFilter) {
     filteredCountries = filteredCountries.filter(
-      (country: any) => country.region === regionFilter,
+      (country) => country.region === regionFilter,
     );
   }
 

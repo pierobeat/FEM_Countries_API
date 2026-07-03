@@ -16,8 +16,6 @@ function CountryDetails() {
     queryFn: () => CountryApi().getCountryDetails(countryName),
   });
 
-  console.log({ country });
-
   const { data: borderCountries = [] } = useQuery({
     queryKey: ["border-countries", country?.borders],
     queryFn: async () => {

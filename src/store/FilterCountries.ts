@@ -12,6 +12,7 @@ type FilterCountriesStore = {
 export const useFilterCountriesStore = create<FilterCountriesStore>((set) => ({
   search: "",
   region: "",
-  addFilter: (name:string, val:string) => set({[name]: val}),
-  removeRegion: () => set({region : ""})
-}))
+  addFilter: (name, val) =>
+    set((prev) => ({ ...prev, [name]: val } as FilterCountriesStore)),
+  removeRegion: () => set({ region: "" }),
+}));

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { CircularProgress } from "@mui/material";
-// import { formatCountryName } from "../utils/formatCountryName";
 import CountryApi from "../api";
+import type { Country } from "../types/Country";
 import CountryData from "../helper/CountryData";
 import SearchInput from "../components/SearchInput";
 import RegionSelect from "../components/RegionSelect";
@@ -25,18 +25,16 @@ function CountryList() {
     addFilter("search", "");
   };
 
-  const { data: countries, isLoading } = useQuery({
+  const { data: countries, isLoading } = useQuery<Country[]>({
     queryKey: ["country-list", regionFilter, searchQuery],
     queryFn: async () => {
       if (regionFilter) {
-        const res = await CountryApi().getCountriesByRegion(regionFilter);
-        return res.data;
+        return CountryApi().getCountriesByRegion(regionFilter);
       }
       if (searchQuery) {
-        const res = await CountryApi().getCountriesByName(searchQuery);
-        return res.data;
+        return CountryApi().getCountriesByName(searchQuery);
       }
-      return await CountryApi().getAllCountries();
+      return CountryApi().getAllCountries();
     },
     enabled: true,
   });
@@ -68,11 +66,10 @@ function CountryList() {
         </div>
       ) : (
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16 pb-2 sm:pb-24">
-          {countries?.map((dt: any) => (
+          {countries?.map((dt: Country) => (
             <div
               key={dt.name}
-              className="shadow-md rounded-md cursor-pointer"
-              style={{ backgroundColor: "var(--header-background)" }}
+              className="shadow-md rounded-md cursor-pointer bg-[var(--header-background)]"
               onClick={() => onSeeCountryDetails(dt.alpha3Code)}
             >
               <div className="h-40 w-full overflow-hidden rounded-t-md">
