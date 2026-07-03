@@ -2,7 +2,7 @@
 
 ![Design preview for the REST Countries API with color theme switcher coding challenge](./src/design/desktop-preview.jpg)
 
-> **Notes:**
+> **Notes (2026):**
 >
 > - The live API previously provided by Frontend Mentor is no longer available, so this project uses `data.json` instead.
 > - This project has been updated to match the API and data provided in this challenge.
