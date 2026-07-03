@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { CircularProgress } from "@mui/material";
-import { formatCountryName } from "../utils/formatCountryName";
+// import { formatCountryName } from "../utils/formatCountryName";
 import CountryApi from "../api";
 import CountryData from "../helper/CountryData";
 import SearchInput from "../components/SearchInput";
